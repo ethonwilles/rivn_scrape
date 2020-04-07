@@ -55,10 +55,11 @@ def chromedriver(url):
                     list_of_words = word.split("-")
                     for word_item in list_of_words:
                         if word_item.lower() == "cookie" or word_item.lower() == "cookiebanner" or word_item.lower() == "consent":
-                            r = requests.post("http://localhost:5000/change-scraped-item", json={"url" : url, "html": f"{item}"})
+                            checker = True
+                            r = requests.post("https://admin-dev.rivn.com/audit-results-post", json={"choice": "cookie","has_cook" : True , "html" : f"{item}" , "url" : url})
                             print(r.json())
                             
-                            checker = True
+                            
                             local_check = True
                 except:
                     1+1
@@ -68,9 +69,10 @@ def chromedriver(url):
                     list_of_words = word.split("-")
                     for w in list_of_words:
                         if word == "cc" or word == "cookie":
-                            r = requests.post("http://localhost:5000/change-scraped-item", json={"html" : f"{item}", "url" : url})
-                            print(r.json())
                             checker = True
+                            r = requests.post("https://admin-dev.rivn.com/audit-results-post", json={"choice": "cookie","has_cook" : True , "html" : f"{item}" , "url" : url})
+                            print(r.json())
+                            
                 except:
                     1+1
         if checker:
@@ -108,10 +110,11 @@ for url in urls:
                             list_of_words = word.split("-")
                             for word_item in list_of_words:
                                 if word_item.lower() == "cookie" or word_item.lower() == "cookiebanner" or word_item.lower() == "consent":
-                                    r = requests.post("http://localhost:5000/change-scraped-item", json={"url" : url, "html": f"{item}"})
+                                    checker = True
+                                    r = requests.post("https://admin-dev.rivn.com/audit-results-post", json={"choice": "cookie","has_cook" : True , "html" : f"{item}" , "url" : url})
                                     print(r.json())
                                     
-                                    checker = True
+                                    
                                     local_check = True
                         except:
                             1+1
@@ -121,9 +124,10 @@ for url in urls:
                             list_of_words = word.split("-")
                             for w in list_of_words:
                                 if word == "cc" or word == "cookie":
-                                    r = requests.post("http://localhost:5000/change-scraped-item", json={"html" : f"{item}", "url" : url})
-                                    print(r.json())
                                     checker = True
+                                    r = requests.post("https://admin-dev.rivn.com/audit-results-post", json={"choice": "cookie","has_cook" : True , "html" : f"{item}" , "url" : url})
+                                    print(r.json())
+                                    
                         except:
                             1+1
                 if checker:
