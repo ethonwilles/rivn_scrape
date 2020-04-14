@@ -85,6 +85,7 @@ def chromedriver(url):
         else:
             r = requests.post("https://admin-dev.rivn.com/audit-results-post", json={"choice" : 'privacy boolean', "url" : url, "has_priv" : False})
             print(r.text)
+        driver.quit()
 for url in urls: 
     privacy_checker = False
     checker = False
