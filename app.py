@@ -35,10 +35,10 @@ def chromedriver(url):
                 try:
                             requests.get(item.get("href"))
                             r = requests.post("https://admin-dev.rivn.com/audit-results-post", json={"choice" : "privacy","has_priv" : True , "priv_url" : item.get("href") , "url" : url})
-                            print(r.json())
+                            print(r.text)
                 except:
                             r = requests.post("https://admin-dev.rivn.com/audit-results-post", json={"choice": "privacy", "has_priv" : True , "priv_url" : f"https://{url}{item.get('href')}" , "url" : url})
-                            print(r.json())
+                            print(r.text)
                 privacy_checker = True
             
         
